@@ -162,6 +162,24 @@
                     <Order>7</Order>
                     <Description>Show Administrative Tools in Start Menu</Description>
                 </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>C:\Windows\SysWOW64\cmd.exe /c powershell -Command "Set-MpPreference -MAPSReporting Advanced -Force; Set-MpPreference -SubmitSamplesConsent NeverSend -Force"</CommandLine>
+                    <Description>Disable Defender automatic submission of samples</Description>
+                    <Order>8</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>C:\Windows\SysWOW64\cmd.exe /c mkdir C:\excluded</CommandLine>
+                    <Description>Add folder for Defender Exclusion</Description>
+                    <Order>9</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>C:\Windows\SysWOW64\cmd.exe /c powershell -Command "Add-MpPreference -ExclusionPath C:\excluded -Force"</CommandLine>
+                    <Description>Exclude Folder from live scanning</Description>
+                    <Order>10</Order>
+                    <RequiresUserInput>true</RequiresUserInput>
+                </SynchronousCommand>
             </FirstLogonCommands>
             <ShowWindowsLive>false</ShowWindowsLive>
         </component>
