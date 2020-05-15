@@ -1,0 +1,2 @@
+Invoke-WebRequest -uri https://download.visualstudio.microsoft.com/download/pr/68d6b204-9df0-4fcc-abcc-08ee0eff9cb2/b029547488a9383b0c8d8a9c813e246feb3ec19e0fe55020d4878fde5f0983fe/vs_Community.exe -OutFile $env:TEMP\vs_Community.exe
+Start-Process -FilePath $env:TEMP\vs_Community.exe -ArgumentList "--add Microsoft.VisualStudio.Component.CoreEditor;includeOptional --add Microsoft.VisualStudio.Workload.ManagedDesktop;includeOptional --add Microsoft.Workload.NativeDesktop;includeOptional --quiet --nocache --wait" -Wait

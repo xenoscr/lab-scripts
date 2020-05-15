@@ -13,7 +13,7 @@ VM="Win10-autoinstall"
 VBoxManage createvm --name $VM --ostype "Windows10_64" --register
 
 # Create a new Disk
-VBoxManage createhd --filename $VBFolder/$VM/$VM.vdi --size 32768
+VBoxManage createhd --filename $VBFolder/$VM/$VM.vdi --size 50000
 
 # Create the SATA Controller
 VBoxManage storagectl $VM --name "SATA Controller" --add sata --controller IntelAHCI
@@ -39,6 +39,9 @@ VBoxManage modifyvm $VM --memory 4096 --vram 128
 # Unattended install settings
 # Key from http://technet.microsoft.com/en-us/library/jj612867.aspx
 VBoxManage unattended install $VM --iso=/storage/ISO/Windows_10/18363.418.191007-0143.19h2_release_svc_refresh_CLIENTENTERPRISEEVAL_OEMRET_x64FRE_en-us.iso --user=admin-user --full-user-name="admin-user" --password password --install-additions --time-zone=UTC --key="NPPR9-FWDCX-D2C8J-H872K-2YT43" --country=US --script-template="./Autounattend.xml"
+
+# Add a network share to the scripts
+VBoxManage sharedfolder add $VM -name "scripts" -hostpath "$PWD/scripts"
 
 # VBoxManage startvm $VM --type headless
 VBoxManage startvm $VM
