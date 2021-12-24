@@ -197,8 +197,13 @@
                     <Description>Disable Defender Tamper Protection</Description>
                 </SynchronousCommand>
                 <SynchronousCommand wcm:action="add">
-                    <CommandLine>powershell -ExecutionPolicy ByPass Invoke-Expression (Invoke-WebRequest -Uri http://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemoteingForAnsible.ps1)</CommandLine>
+                    <CommandLine>powershell -ExecutionPolicy ByPass "Invoke-Expression (Invoke-WebRequest -UseBasicParsing -Uri https://raw.githubusercontent.com/ansible/ansible/devel/examples/scripts/ConfigureRemotingForAnsible.ps1)"</CommandLine>
                     <Order>14</Order>
+                    <Description>Configure for Ansible</Description>
+                </SynchronousCommand>
+                <SynchronousCommand wcm:action="add">
+                    <CommandLine>powershell -ExecutionPolicy ByPass \\vboxsvr\scripts\install-sysinternals.ps1</CommandLine>
+                    <Order>15</Order>
                     <Description>Configure for Ansible</Description>
                 </SynchronousCommand>
             </FirstLogonCommands>
